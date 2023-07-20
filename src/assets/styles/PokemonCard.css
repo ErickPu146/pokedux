@@ -1,0 +1,10 @@
+.pokemon-name {
+  font-family: "Acme", sans-serif;
+}
+
+.first-letter {
+  font-weight: bold;
+  font-size: 2rem;
+  color: rgb(77, 1, 147);
+  text-transform: uppercase;
+}

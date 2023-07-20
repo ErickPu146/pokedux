@@ -1,7 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+
+.logo {
+  height: 30vmin;
+  pointer-events: none;
+  background-color: black;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-spin {
+    animation: App-logo-spin infinite .8s linear;
+  }
+}
 
 .App {
   margin: 0 auto; /* Centra el contenedor horizontalmente */
   max-width: 1200px; /* Ancho máximo del contenedor */
   padding: 0 20px; 
   transform: translateY(3rem);
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
