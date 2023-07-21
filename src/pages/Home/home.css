@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+
+.pokebola {
+  height: 30vmin;
+  pointer-events: none;
+}
+.logo {
+  width: 100%;
+}
+.d-none {
+  display: none;
+}
+
+.home {
+  margin: 0 auto;
+  max-width: 1200px; 
+  padding: 0; 
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pokebola {
+    animation: App-pokebola-spin infinite .8s linear;
+  }
+}
+
+
+@media (min-width: 1024px) and (max-width: 3000px) {
+  .pokebola {
+    height: 20vmin;
+  }
+}
+
+@media (min-width: 3001px) {
+  .pokebola {
+    height: 10vmin;
+  }
+}
+
+
+
+@keyframes App-pokebola-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

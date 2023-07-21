@@ -3,20 +3,25 @@ import Meta from "antd/es/card/Meta";
 import "../assets/styles/PokemonCard.css";
 import StarButton from "./StarButton";
 import { useDispatch } from "react-redux";
-import { setFavorite } from "../actions";
-
+import { setFavorite } from "../slices/dataSlice";
+import { Link } from "react-router-dom";
 
 const PokemonCard = ({ pokemon }) => {
-  const dispatch = useDispatch()
+  console.log(
+    "🚀 ~ file: PokemonCard.jsx:10 ~ PokemonCard ~ pokemon:",
+    pokemon
+  );
+
+  const dispatch = useDispatch();
   const firstLetter = pokemon.name.charAt();
   const restOfName = pokemon.name.slice(1);
 
-  const types = pokemon.types.map(item => item.type.name).join(", ");
+  const types = pokemon.types.map((item) => item.type.name).join(", ");
 
   const handleOnFavorite = () => {
-    console.log(pokemon.id)
-    dispatch(setFavorite(pokemon.id))
-  }
+    console.log(pokemon.id);
+    dispatch(setFavorite(pokemon.id));
+  };
   return (
     <>
       <Card
@@ -26,8 +31,21 @@ const PokemonCard = ({ pokemon }) => {
             <span className="pokemon-name">{restOfName}</span>
           </>
         }
-        cover={<img src={pokemon.sprites.other.home.front_default} alt={pokemon.name} />}
-        extra={<StarButton isFavorite={pokemon.favorite} onClick={handleOnFavorite}/>}
+        cover={
+          <img
+            src={pokemon.sprites.other.home.front_default}
+            alt={pokemon.name}
+          />
+        }
+        extra={
+          <>
+            <StarButton
+              isFavorite={pokemon.favorite}
+              onClick={handleOnFavorite}
+            />
+            <Link to={`/profile/${pokemon.id}`}>Ver Mas</Link>
+          </>
+        }
         bordered={false}
         className="w-100 h-100"
       >

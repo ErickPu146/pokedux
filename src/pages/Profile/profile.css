@@ -1,0 +1,86 @@
+.pokebola {
+  height: 30vmin;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pokebola {
+    animation: App-pokebola-spin infinite .8s linear;
+  }
+}
+.profile {
+  margin: 0 auto;
+  max-width: 1200px; 
+  padding: 0;
+}
+
+.pokemon-info {
+  font-family: "Acme", sans-serif;
+  font-weight: bold;
+}
+
+.profile-name {
+  font-size: 3rem;
+}
+
+.abilities {
+  font-size: 2rem;
+}
+.content {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.img-responsive {
+  height: 100%;
+  width: 80%;
+  transition: 1s;
+}
+
+.img-responsive:hover {
+  transform: scale(1.04);
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .profile-name {
+    font-size: 4.5rem;
+  }
+  .abilities {
+    font-size: 2.5rem;
+  }
+  .content {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .img-responsive {
+    height: 100%;
+
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .profile-name {
+    font-size: 6.5rem;
+  }
+  .abilities {
+    font-size: 3rem;
+  }
+  .content {
+    font-weight: 600;
+  }
+  .img-responsive {
+    height: 100%;
+
+    width: 100%;
+  }
+}
+
+
+@keyframes App-pokebola-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

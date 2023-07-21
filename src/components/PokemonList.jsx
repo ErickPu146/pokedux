@@ -6,7 +6,7 @@ const PokemonList = ({ pokemons }) => {
   return (
     <>
       <div className="PokemonList">
-        <Row gutter={[16, 16]}>
+        <Row gutter={[16, 16]} justify='center'>
           {pokemons.map((pokemon, index) => (
             <Col className="gutter-row" key={index} xs={24} sm={12} md={8} lg={6}>
               <PokemonCard pokemon={pokemon} />
