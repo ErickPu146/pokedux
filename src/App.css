@@ -1,27 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 
-.logo {
+.pokebola {
   height: 30vmin;
   pointer-events: none;
-  background-color: black;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .logo-spin {
-    animation: App-logo-spin infinite .8s linear;
-  }
+.logo {
+  width: 100%;
+}
+.d-none {
+  display: none;
 }
 
 .App {
-  margin: 0 auto; /* Centra el contenedor horizontalmente */
-  max-width: 1200px; /* Ancho máximo del contenedor */
-  padding: 0 20px; 
-  transform: translateY(3rem);
+  margin: 0 auto;
+  max-width: 1200px; 
+  padding: 0; 
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pokebola {
+    animation: App-pokebola-spin infinite .8s linear;
+  }
 }
 
 
-@keyframes App-logo-spin {
+@media (min-width: 1024px) and (max-width: 3000px) {
+  .pokebola {
+    height: 20vmin;
+  }
+}
+
+@media (min-width: 3001px) {
+  .pokebola {
+    height: 10vmin;
+  }
+}
+
+
+
+@keyframes App-pokebola-spin {
   from {
     transform: rotate(0deg);
   }

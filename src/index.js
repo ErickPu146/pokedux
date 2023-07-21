@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import { pokemonsReducer } from "./reducers/pokemonsReducer";
 import { Provider } from "react-redux";
 import {
   applyMiddleware,
@@ -9,16 +8,17 @@ import {
   legacy_createStore as createStore,
 } from "redux";
 import thunk from "redux-thunk";
-import "./index.css";
-import App from "./App";
 import { logger } from "./middlewares";
+import rootReducer from "./reducers/rooReducer";
+import App from "./App";
+import "./index.css";
 
 const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const composeEnhancers = composeAlt(applyMiddleware(thunk, logger)
 );
 
-const store = createStore(pokemonsReducer, composeEnhancers);
+const store = createStore(rootReducer, composeEnhancers);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

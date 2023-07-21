@@ -1,16 +1,24 @@
 import { Col, Row, Space } from "antd";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { createSelector } from "reselect";
 import { getPokemonsWithDetails } from "./actions";
 import { getPokemons } from "./api";
 import Searcher from "./components/Searcher";
 import PokemonList from "./components/PokemonList";
-import "./App.css";
 import pokebola from "./assets/statics/pokebola.png";
+import logo from "./assets/statics/logo.png";
+import "./App.css";
+
+const getPokemonsSelector = createSelector(
+  (state) => state.getIn(["data", "pokemons"], shallowEqual),
+  (pokemons) => pokemons.toJS()
+);
 
 function App() {
-  const pokemons = useSelector((state) => state.pokemons);
-  const loading = useSelector((state) => state.loading);
+  const pokemons = useSelector(getPokemonsSelector);
+  const loading = useSelector((state) => state.getIn(["ui", "loading"]));
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,13 +34,10 @@ function App() {
     <>
       <div className="App">
         <Space direction="vertical" size="large" style={{ display: "flex" }}>
-          <Row>
+          <Row justify="center">
             <Col>
-              <img
-                src={pokebola}
-                alt="logo"
-                className={`logo ${loading ? "logo-spin" : ""} `}
-              />
+              <img src={pokebola} alt="pokebola" className={`${loading ? 'pokebola' : 'd-none'}`} />
+              <img src={logo} alt="logo" className={`${!loading ? 'logo' : 'd-none'}`} />
             </Col>
           </Row>
           <Row justify="center">
@@ -41,7 +46,7 @@ function App() {
             </Col>
           </Row>
 
-          {!loading ? <PokemonList pokemons={pokemons} /> : <p>Cargando</p>}
+          {!loading ? <PokemonList pokemons={pokemons} /> : <p className="first-letter">Cargando</p>}
         </Space>
       </div>
     </>
