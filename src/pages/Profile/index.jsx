@@ -32,20 +32,16 @@ const Profile = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.ui.loading);
   const pokemon = useSelector((state) => state.data.searchedPokemon)
+  console.log("🚀 ~ file: index.jsx:35 ~ Profile ~ pokemon:", pokemon)
   const { pokemonId } = useParams();
 
   useEffect(() => {
-    const pokemonRes = searchPokemon(`${pokemonId}`)
-    
+    dispatch(searchPokemon(`${pokemonId}`));
   }, [pokemonId]);
-
-  console.log(pokemon);
 
   return (
     <>
       <div className="profile">
-        Hola soy {pokemon.name}
-
         <Row justify="center">
           <img
             src={pokebola}
@@ -53,6 +49,10 @@ const Profile = () => {
             className={`${loading ? "pokebola" : "d-none"}`}
           />
         </Row>
+
+        {
+          !loading ? <p>Hola soy {pokemon.name}</p> : null
+        }
         {/* 
 
         {!loading ? (

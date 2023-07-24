@@ -49,7 +49,7 @@ export const dataSlice = createSlice({
       }
     },
     setSerchedPokemon: (state, action) => {
-      state.searchedPokemon = [action.payload];
+      state.searchedPokemon = action.payload;
     }
   },
 });

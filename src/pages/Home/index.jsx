@@ -5,25 +5,26 @@ import { fetchPokemonsWithDetails } from "../../slices/dataSlice";
 import Searcher from "../../components/Searcher";
 import PokemonList from "../../components/PokemonList";
 import PaginationPokemons from "../../components/PaginationPokemons";
-import logo from "../../assets/statics/logo.png"
+import logo from "../../assets/statics/logo.png";
 import pokebola from "../../assets/statics/pokebola.png";
 
 import "./home.css";
+import PokemonCard from "../../components/PokemonCard";
 
 const Home = () => {
-    const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
-    const searchedPokemon = useSelector((state) => state.data.searchedPokemon);
-    const loading = useSelector((state) => state.ui.loading);
-  
-    const dispatch = useDispatch();
-  
-    useEffect(() => {
-      dispatch(fetchPokemonsWithDetails());
-    }, []);
+  const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
+  const searchedPokemon = useSelector((state) => state.data.searchedPokemon);
+  const loading = useSelector((state) => state.ui.loading);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPokemonsWithDetails());
+  }, []);
   return (
     <>
       <div className="home">
-      <Space direction="vertical" size="large" style={{ display: "flex" }}>
+        <Space direction="vertical" size="large" style={{ display: "flex" }}>
           <Row justify="center">
             <Col>
               <img
@@ -46,10 +47,14 @@ const Home = () => {
 
           {!loading ? (
             <>
-              {searchedPokemon.length > 0 ? (
+              {searchedPokemon.name !== "" ? (
                 <>
-                  <Col md={24}>Mi pokemon buscado:</Col>
-                  <PokemonList pokemons={searchedPokemon} />
+                  <Row gutter={[16, 16]} justify="center">
+                    <Col md={24}>Mi pokemon buscado:</Col>
+                    <Col className="gutter-row" xs={24} sm={12} md={8} lg={6}>
+                      <PokemonCard pokemon={searchedPokemon} />
+                    </Col>
+                  </Row>
                 </>
               ) : null}
 

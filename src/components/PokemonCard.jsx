@@ -6,12 +6,7 @@ import { useDispatch } from "react-redux";
 import { setFavorite } from "../slices/dataSlice";
 import { Link } from "react-router-dom";
 
-const PokemonCard = ({ pokemon }) => {
-  console.log(
-    "🚀 ~ file: PokemonCard.jsx:10 ~ PokemonCard ~ pokemon:",
-    pokemon
-  );
-
+const PokemonCard = ({ pokemon }) => {  
   const dispatch = useDispatch();
   const firstLetter = pokemon.name.charAt();
   const restOfName = pokemon.name.slice(1);
